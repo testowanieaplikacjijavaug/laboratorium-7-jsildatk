@@ -20,10 +20,6 @@ public class NotesServiceImpl implements NotesService {
                 .isEmpty(), "Imię ucznia nie może być puste");
         float sum = 0.0f;
         final Collection<Note> notes = storageService.getAllNotesOf(name);
-        if ( notes.isEmpty() ) {
-            throw new IllegalArgumentException("Student nie istnieje");
-        }
-        
         for ( final Note note : notes ) {
             sum += note.getNote();
         }

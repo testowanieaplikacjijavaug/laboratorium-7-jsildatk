@@ -39,12 +39,7 @@ public class NotesServiceImplTest {
     public void shouldNotCalculateAverageForPersonWithWhitespaces() {
         assertThrows(IllegalArgumentException.class, () -> notesService.averageOf("          "));
     }
-    
-    @Test
-    public void shouldNotCalculateAverageForNotExistingPerson() {
-        assertThrows(IllegalArgumentException.class, () -> notesService.averageOf("teest"));
-    }
-    
+
     @Test
     public void shouldCalculateAverageForStudent() {
         final String name = "test";

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pl"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>NoteServiceImpl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">laboratorium-7-jsildatk</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">NoteServiceImpl.java</span></div><h1>NoteServiceImpl.java</h1><pre class="source lang-java linenums">import java.util.Collection;
+
+public class NoteServiceImpl implements NoteService {
+    
+    private final NoteStorage storageService;
+    
+<span class="nc" id="L7">    private NoteServiceImpl(final NoteStorage storageService) {</span>
+<span class="nc" id="L8">        this.storageService = storageService;</span>
+<span class="nc" id="L9">    }</span>
+    
+    public static NoteServiceImpl createWith(final NoteStorage storageService) {
+<span class="nc" id="L12">        return new NoteServiceImpl(storageService);</span>
+    }
+    
+    @Override
+    public void add(Note note) {
+<span class="nc" id="L17">        storageService.add(note);</span>
+<span class="nc" id="L18">    }</span>
+    
+    @Override
+    public float averageOf(String name) {
+<span class="nc" id="L22">        float sum = 0.0f;</span>
+<span class="nc" id="L23">        final Collection&lt;Note&gt; notes = storageService.getAllNotesOf(name);</span>
+<span class="nc bnc" id="L24" title="All 2 branches missed.">        for ( final Note note : notes ) {</span>
+<span class="nc" id="L25">            sum += note.getNote();</span>
+<span class="nc" id="L26">        }</span>
+<span class="nc" id="L27">        return sum / notes.size();</span>
+    }
+    
+    @Override
+    public void clear() {
+<span class="nc" id="L32">        storageService.clear();</span>
+<span class="nc" id="L33">    }</span>
+    
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
